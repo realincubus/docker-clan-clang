@@ -28,4 +28,4 @@ RUN cd ~ && \
 
 RUN cd ~ && \
     cd build/tools/clang/examples/ClanPlugin/ && \
-    make ClanPlugin 
+    make ClanPlugin -j 8 
