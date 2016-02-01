@@ -5,8 +5,9 @@
 
 # ├─yantis/archlinux-tiny
 #   ├─realincubus/docker-clang-build
+#     ├─realincubus/pet
 
-FROM realincubus/docker-clang-build
+FROM realincubus/pet
 MAINTAINER Stefan Kemnitz <kemnitz.stefan@googlemail.com>
 
 RUN pacman --noconfirm -Rdd texinfo-fake && \
@@ -22,13 +23,13 @@ RUN pacman --noconfirm -Rdd texinfo-fake && \
     cd ~ && \
     cd llvm/tools/clang/examples/ClanPlugin/pluto_src/ && \
     ./local_install.sh && \
-    make -j 8 && \
+    make -j 3 && \
     make install
 
 # to regenerate build
 RUN cd ~ && \
     cd build/ && \
-    make -j 16 && \
+    make && \
     cd ~ && \
     cd build/tools/clang/examples/ClanPlugin/ && \
-    make ClanPlugin -j 16
+    make ClanPlugin
